@@ -1275,6 +1275,7 @@
                   "reference/wizard",
                   "reference/token-use",
                   "reference/prompt-caching",
+                  "reference/github-idea-radar",
                   "channels/grammy"
                 ]
               },

@@ -1,0 +1,29 @@
+{
+  "id": "github-webhook-bridge",
+  "name": "GitHub Webhook Bridge",
+  "description": "Verify GitHub webhook signatures and forward events to OpenClaw hooks",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "path": {
+        "type": "string"
+      },
+      "forwardUrl": {
+        "type": "string"
+      },
+      "webhookSecret": {
+        "type": "string"
+      },
+      "hooksToken": {
+        "type": "string"
+      },
+      "allowedEvents": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

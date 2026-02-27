@@ -1,0 +1,246 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.9",
+    "lastTouchedAt": "2026-02-16T00:35:07.646Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-10T08:05:20.034Z",
+    "lastRunVersion": "2026.2.9",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "alibaba-cloud:default": {
+        "provider": "alibaba-cloud",
+        "mode": "api_key"
+      }
+    }
+  },
+  "models": {
+    "mode": "merge",
+    "providers": {
+      "alibaba-cloud": {
+        "baseUrl": "https://dashscope-us.aliyuncs.com/compatible-mode/v1",
+        "api": "openai-completions",
+        "models": [
+          {
+            "id": "qwen3-max-2026-01-23",
+            "name": "qwen3-max-thinking",
+            "reasoning": false,
+            "input": [
+              "text"
+            ],
+            "cost": {
+              "input": 0,
+              "output": 0,
+              "cacheRead": 0,
+              "cacheWrite": 0
+            },
+            "contextWindow": 262144,
+            "maxTokens": 65536
+          }
+        ]
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "alibaba-cloud/qwen3-max-2025-09-23"
+      },
+      "imageModel": {
+        "primary": "alibaba-cloud/qwen3-vl-plus"
+      },
+      "models": {
+        "alibaba-cloud/qwen3-max-2026-01-23": {}
+      },
+      "workspace": "/home/admin/.openclaw/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main"
+      },
+      {
+        "id": "wecom-dm-4672"
+      },
+      {
+        "id": "wecom-group-wrqsffbwaaqhy2k4wyq3gfpj4ryfv-xa"
+      }
+    ]
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": true,
+    "nativeSkills": true
+  },
+  "cron": {
+    "enabled": true
+  },
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "boot-md": {
+          "enabled": true
+        },
+        "command-logger": {
+          "enabled": true
+        },
+        "session-memory": {
+          "enabled": true
+        }
+      }
+    },
+    "enabled": true,
+    "path": "/hooks",
+    "token": "<REDACTED>",
+    "mappings": [
+      {
+        "id": "github-events",
+        "match": {
+          "path": "github",
+          "source": "github"
+        },
+        "action": "agent",
+        "wakeMode": "now",
+        "name": "GitHub",
+        "sessionKey": "<REDACTED>",
+        "deliver": false,
+        "messageTemplate": "[GitHub] event={{event}} action={{action}} repo={{repository}}\\nTitle={{title}}\\nDelivery={{delivery}}\\nPayload={{payload}}"
+      }
+    ]
+  },
+  "channels": {
+    "feishu": {
+      "accounts": {
+        "feishubot": {
+          "appId": "cli_a91b73ac0e78dcb0",
+          "appSecret": "<REDACTED>",
+          "domain": "feishu",
+          "enabled": true
+        }
+      }
+    },
+    "wecom": {
+      "enabled": true,
+      "token": "<REDACTED>",
+      "encodingAesKey": "<REDACTED>"
+    }
+  },
+  "gateway": {
+    "port": 17310,
+    "mode": "local",
+    "bind": "lan",
+    "controlUi": {
+      "basePath": "e3b48ad9",
+      "allowInsecureAuth": true
+    },
+    "auth": {
+      "mode": "token",
+      "token": "<REDACTED>"
+    },
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "reload": {
+      "mode": "restart"
+    },
+    "http": {
+      "endpoints": {
+        "chatCompletions": {
+          "enabled": true
+        },
+        "responses": {
+          "enabled": true
+        }
+      }
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  },
+  "plugins": {
+    "entries": {
+      "alibaba-cloud-auth": {
+        "enabled": false
+      },
+      "qqbot": {
+        "enabled": true
+      },
+      "dingtalk": {
+        "enabled": true
+      },
+      "wecom": {
+        "enabled": true
+      },
+      "feishu": {
+        "enabled": true
+      },
+      "github-webhook-bridge": {
+        "enabled": true,
+        "config": {
+          "path": "/github/webhook",
+          "forwardUrl": "http://127.0.0.1:17310/hooks/github",
+          "webhookSecret": "<REDACTED>",
+          "hooksToken": "<REDACTED>",
+          "allowedEvents": [
+            "ping",
+            "issues",
+            "issue_comment",
+            "pull_request",
+            "pull_request_review",
+            "push"
+          ]
+        }
+      }
+    },
+    "installs": {
+      "qqbot": {
+        "source": "path",
+        "sourcePath": "/home/admin/qqbot",
+        "installPath": "/home/admin/.openclaw/extensions/qqbot",
+        "version": "1.4.4",
+        "installedAt": "2026-02-10T14:06:13.661Z"
+      },
+      "dingtalk": {
+        "source": "npm",
+        "spec": "https://github.com/soimy/clawdbot-channel-dingtalk.git",
+        "installPath": "/home/admin/.openclaw/extensions/dingtalk",
+        "version": "2.5.1",
+        "installedAt": "2026-02-10T14:07:10.219Z"
+      },
+      "wecom": {
+        "source": "path",
+        "sourcePath": "/home/admin/openclaw-plugin-wecom",
+        "installPath": "/home/admin/.openclaw/extensions/wecom",
+        "version": "1.2.1",
+        "installedAt": "2026-02-10T14:08:38.715Z"
+      },
+      "github-webhook-bridge": {
+        "source": "path",
+        "sourcePath": "/home/admin/.openclaw/extensions/github-webhook-bridge",
+        "installPath": "/home/admin/.openclaw/extensions/github-webhook-bridge",
+        "version": "0.1.0",
+        "installedAt": "2026-02-27T10:24:49Z"
+      }
+    }
+  }
+}
