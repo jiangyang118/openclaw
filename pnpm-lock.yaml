@@ -441,6 +441,8 @@ importers:
 
   extensions/whatsapp: {}
 
+  extensions/youdao-oauth-helper: {}
+
   extensions/zalo:
     dependencies:
       undici:

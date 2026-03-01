@@ -1,0 +1,16 @@
+{
+  "name": "@openclaw/youdao-oauth-helper",
+  "version": "2026.2.26",
+  "private": true,
+  "description": "OpenClaw helper plugin for Youdao OAuth callback and token exchange.",
+  "type": "module",
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ],
+    "install": {
+      "localPath": "extensions/youdao-oauth-helper",
+      "defaultChoice": "path"
+    }
+  }
+}

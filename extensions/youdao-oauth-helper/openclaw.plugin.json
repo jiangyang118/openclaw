@@ -1,0 +1,37 @@
+{
+  "id": "youdao-oauth-helper",
+  "name": "Youdao OAuth Helper",
+  "description": "Adds OAuth start/callback endpoints to exchange Youdao authorization code for access token.",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "basePath": {
+        "type": "string",
+        "description": "Base path for OAuth routes. Endpoints become <basePath>/start and <basePath>/callback."
+      },
+      "clientId": {
+        "type": "string",
+        "description": "Youdao ConsumerKey (client_id)."
+      },
+      "clientSecret": {
+        "type": "string",
+        "description": "Youdao ConsumerSecret (client_secret)."
+      },
+      "redirectUri": {
+        "type": "string",
+        "description": "Exact callback URL configured in Youdao OpenAPI app settings."
+      },
+      "stateTtlSeconds": {
+        "type": "integer",
+        "minimum": 60,
+        "maximum": 86400,
+        "description": "State lifetime (seconds). Default 600."
+      },
+      "strictState": {
+        "type": "boolean",
+        "description": "Require callback state verification against prior /start requests. Default true."
+      }
+    }
+  }
+}
